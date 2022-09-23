@@ -5,15 +5,11 @@ class Solution {
         int flag = n<0 ? -1:1;
         n = n*flag;
         
-        Stack<Integer> st = new Stack<>();
-             while(n>0){
-                  st.push(n%10);
-                   n/=10;
-              }      
-         long r=0, i=1;      
-        while(!st.empty()){
-            r = r + st.pop() * i; 
-            i*=10;
+         
+         long r=0;      
+        while(n>0){
+            r = r*10+ n%10; 
+            n/=10;
         } 
         
         // for over 32bit, i.e. long type
