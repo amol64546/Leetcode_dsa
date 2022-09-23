@@ -6,17 +6,13 @@ class Solution {
                         if(c=='(' || c=='{' || c=='[' ){
                                 st.push(c);
                         }else{
-                                if(!st.empty() && isMatch(st.peek(), c)){
-                                        st.pop();
-                                }else{
-                                     return false;
-                                }
+                            if(!st.empty() && isMatch(st.peek(), c))                                                  st.pop();  
+                            else
+                                return false;
                         }
                 }
-                if(st.empty()){
-                        return true;
-                }
-        return false;
+               
+        return st.empty();
     }
     
      boolean isMatch(char open, char close){
