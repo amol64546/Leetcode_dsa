@@ -6,8 +6,7 @@ class Solution {
                         if(c=='(' || c=='{' || c=='[' ){
                                 st.push(c);
                         }else{
-                            if(!st.empty() && isMatch(st.peek(), c))                                                  st.pop();  
-                            else
+                            if(st.empty() || Math.abs(c-st.pop())>2) 
                                 return false;
                         }
                 }
@@ -15,14 +14,5 @@ class Solution {
         return st.empty();
     }
     
-     boolean isMatch(char open, char close){
-                if(open=='(' && close==')')
-                        return true;
-                if(open=='[' && close==']')
-                        return true;
-                if(open=='{' && close=='}')
-                        return true;
-
-                return false;
-        }
+     
 }
