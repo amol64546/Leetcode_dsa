@@ -5,12 +5,15 @@ class Solution {
         if(x<10) return true;
         
         
-        int copy = x, r=0;
-        while(x>0){
+        int r=0;
+        while(r<x){
             r = r*10 + x%10;
             x/=10;
         }
         
-        return r==copy;
+        // even digits r==x
+        // odd digits  (r/10)==x
+        // O(half no of digits)
+        return (r==x || (r/10)==x);
     }
 }
