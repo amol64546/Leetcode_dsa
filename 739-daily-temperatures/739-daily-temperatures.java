@@ -3,25 +3,24 @@ class Solution {
         
         int n = arr.length;
            
-        Stack<Integer> st = new Stack<>();  
-        //<index>
-      
-       
-        int ans[] = new int[n];
-        
-        for(int i=n-1; i>=0;i--){
-           
-            while(!st.empty() && arr[st.peek()]<=arr[i])
-                st.pop();
+          int[] ans = new int[n];
           
-            if(st.empty())
-                ans[i] = 0;
-      
-            else  
-                ans[i] = st.peek() - i; // distance
-          
-            st.push(i);
-        }
-        return ans;
+            int st=0;    // ptr
+           for(int i=0; i<n-1; i++){   // forward
+                if(arr[i]<arr[i+1])
+                    ans[i] = 1;    // adjacent
+                 else{
+                      st = i+1;  // from next to adjacent
+                       while(st<=n-1){   // upto last ele
+                            if(arr[i]<arr[st]){
+                                  ans[i] = st - i;   // distance
+                                   break;
+                              }
+                             st++;
+                        }
+                 }
+         }
+                
+         return ans;
     }
 }
