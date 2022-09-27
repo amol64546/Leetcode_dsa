@@ -7,7 +7,7 @@ class Solution {
         
         if(m*k>n) return -1;
         
-        int l=0, r=0;
+        int l=Integer.MAX_VALUE, r=Integer.MIN_VALUE;
         int days=-1;
         for(int val: arr){
             l = Math.min(l, val);
