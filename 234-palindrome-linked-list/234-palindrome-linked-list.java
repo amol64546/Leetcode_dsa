@@ -10,15 +10,15 @@
  */
 class Solution {
     public boolean isPalindrome(ListNode head) {
-        int l=0, r=0;
-        int i = 1;
+        int n=0, r=0;
+        int i=1;
         while(head!=null){
-            l = l*10 + head.val;    // normal
-            r = r+ head.val * i;   // reverse
+            n = n*10 + head.val;
+            r = r + head.val  * i;
             i*=10;
             head = head.next;
         }
         
-        return (r==l);
+        return r==n;
     }
 }
