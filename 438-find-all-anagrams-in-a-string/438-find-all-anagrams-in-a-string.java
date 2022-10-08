@@ -6,28 +6,22 @@ class Solution {
         int[] ms = new int[26];
         
          int slen = s.length();
-        int window = p.length();
-        if(window>slen) return ans;       
+        int plen = p.length();
+        if(plen>slen) return ans;       
         
-        int l=0,r=-1;
-        while(++r<window){          
-            mp[p.charAt(r)-'a']++;
-            ms[s.charAt(r)-'a']++;
-        } 
-        
+       
+        for(int i=0;i<plen; i++){          
+            mp[p.charAt(i)-'a']++;
+            ms[s.charAt(i)-'a']++;
+        }         
         if(isEqual(mp,ms))   
-            ans.add(l);     
-          
+            ans.add(0);            
      
-        while(r<slen)  {          
-            ms[s.charAt(r++)-'a']++;
-                       
-            
-            ms[s.charAt(l++)-'a']--;             
-             
-            
-            if(isEqual(mp,ms))   
-                ans.add(l);           
+        for(int i=plen;i<slen; i++){  
+            ms[s.charAt(i)-'a']++;      // add  
+            ms[s.charAt(i-plen)-'a']--; // remove                                
+            if(isEqual(mp,ms))          // compare
+                ans.add(i-plen+1);            
         }
         return ans;
         
