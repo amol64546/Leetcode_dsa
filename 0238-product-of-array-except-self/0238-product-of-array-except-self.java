@@ -3,16 +3,17 @@ class Solution {
         
         int n = arr.length;
         int[] ans=new int[n];
-        ans[0]=1;
-       
-        for(int i=1; i<n; i++){
-          ans[i]=ans[i-1] * arr[i-1];  
+        
+        int left=1;       
+        for(int i=0; i<n; i++){
+          ans[i] = left;
+          left *= arr[i];            
         }
         
-        int r=1;
+        int right=1;
         for(int i=n-1; i>=0; i--){
-           ans[i] = r * ans[i];
-             r    = r * arr[i];
+           ans[i] *= right;
+           right  *= arr[i];
         }
         return ans;
     }
