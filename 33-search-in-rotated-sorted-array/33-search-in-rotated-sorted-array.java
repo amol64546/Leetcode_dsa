@@ -1,39 +1,27 @@
 class Solution {
-    public int search(int[] arr, int target) {
-        
-        // finding minInd
+    public int search(int[] arr, int k) {
         int l=0, r=arr.length-1;
-        while(l<r){
-            int mid = (l+r)/2;
-            if(arr[mid]>arr[r]){
-                l=mid+1;
-            }else if(arr[mid]<arr[r]){
-                r=mid;
+        while(l<=r){
+            int mid=(l+r)/2;
+            if(arr[mid]==k) return mid;
+            
+            // left part is sorted
+            if(arr[l]<=arr[mid]){
+                if(arr[l]<=k && k<arr[mid]){  // target in range
+                    r=mid-1;   
+                }else{               // target in right part
+                    l=mid+1;
+                }
+            }
+            // right part is sorted
+            else{
+                if(arr[mid]<k && k<=arr[r]){  // target in range
+                    l=mid+1;
+                }else{                  // target in left part
+                    r=mid-1;
+                }
             }
         }
-        int minInd = r;
-        
-        // updating l and r to take one of subarr
-        l=0; r=arr.length-1;
-        if(arr[minInd]<= target && target<=arr[r])   // in range of 2nd subarr
-            l = minInd;
-        else //if(target>arr[r])     // in range of 1st subarr or value not exist
-             r= minInd-1;
-        
-        
-        // binary search on one of subarr
-        while(l<=r){
-            int mid = (l+r)/2;
-            if(target<arr[mid])
-                r = mid-1;
-            else if(target>arr[mid])
-                l=mid+1;
-            else
-                return mid;
-            
-        }
         return -1;
-        
-        
     }
 }
