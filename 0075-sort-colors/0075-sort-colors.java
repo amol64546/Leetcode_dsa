@@ -1,19 +1,41 @@
 class Solution {
-    public void sortColors(int[] arr) {
-      
-        int count0=0, count1=0, count2=0;
-        for(int i:arr){
-            if(i==0) count0++;
-            else if(i==1) count1++;
-            else count2++;
+    public void print(int[] arr){
+        for(int i: arr){
+            System.out.print(i+" ");
         }
-        for(int i=0; i<arr.length; i++){
-            if(i<count0) arr[i]=0;
-            else if(i<count0+count1) arr[i]=1;
-            else arr[i]=2;
-                
-            
+        System.out.println();
+    } 
+    public void sortColors(int[] nums) {
+        print(nums);
+        int l=0, r=nums.length-1;
+        int i=0;
+        while(i<=r){
+           if(nums[i]==0){              
+               int temp = nums[i];
+                nums[i] = nums[l];
+                nums[l] = temp;                
+               l++;
+               
+               // sure it will be 1 at i after swapping
+             
+               print(nums);
+           }
+           
+           if(nums[i]==2){                
+                int temp = nums[i];
+                nums[i] = nums[r];
+                 nums[r] = temp;              
+               r--;  
+               i--;
+               print(nums);
+                // not sure which will be at i after swapping
+           }
+           
+           i++;
+         
+           
         }
+        print(nums);
     }
 }
     
