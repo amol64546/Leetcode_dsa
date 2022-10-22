@@ -20,10 +20,10 @@ class Solution {
     }
     public boolean helper(TreeNode root, long low, long high){
         if(root==null) return true;
-        long curr = root.val;
         
-        return (low<=curr && curr<=high) && 
-            helper(root.left,low,curr-1) &&
-            helper(root.right,curr+1,high);
+        
+        return (low<=root.val && root.val<=high) && 
+            helper(root.left,low,root.val-1L) &&
+            helper(root.right,root.val+1L,high);
     }
 }
