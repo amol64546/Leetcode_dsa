@@ -3,21 +3,22 @@ class Solution {
         int n = arr.length;
         Arrays.sort(arr);
         List ans= new ArrayList();
-
         
-        for(int i=0; i<n; i++){
-            int target = -arr[i];
+        for(int i=0; i<n-2; i++){  
+            
            int j=i+1;
             int k=n-1;
             while(j<k){
-                int sum=arr[j]+arr[k];
-                if(sum>target)
+                int target=-(arr[j]+arr[k]);
+                if(arr[i]>target)
                     k--;
-                else if(sum<target)
+                else if(arr[i]<target)
                     j++;
                 else{
                     List l= new ArrayList(Arrays.asList(arr[i],arr[j],arr[k]));
                     ans.add(l);
+                    
+                    // update both till we get equal elements
                     while(j<k && arr[j]==arr[j+1])
                         j++;
                     j++;
@@ -26,6 +27,8 @@ class Solution {
                     k--;
                     
                 }
+                
+                // update untill we dont get different element
                 while(i<n-2 && arr[i]==arr[i+1])
                        i++;                
                     
