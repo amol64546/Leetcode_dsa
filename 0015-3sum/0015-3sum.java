@@ -15,25 +15,18 @@ class Solution {
                     k--;
                 else if(arr[i]<target)
                     j++;
-                else{
-                    
-                    List l= new ArrayList(Arrays.asList(arr[i],arr[j],arr[k]));
-                    ans.add(l);
+                else{                                      
+                    ans.add(Arrays.asList(arr[i],arr[j],arr[k]));
                     
                     // update both till we get equal elements
                     while(j<k && arr[j]==arr[j+1])
-                        j++;
-                    j++;
+                        j++;                    
                     while(j<k && arr[k]==arr[k-1])
                         k--;
-                    k--;
-                    
-                }           
-                                
-                    
-                
-            }
-            
+                    j++;
+                    k--;                    
+                }                                                                               
+            }            
         }
         return ans;
     }
