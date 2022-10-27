@@ -5,16 +5,18 @@ class Solution {
         List ans= new ArrayList();
         
         for(int i=0; i<n-2; i++){  
-            
+            if(i>0 && arr[i]==arr[i-1]) continue;
            int j=i+1;
             int k=n-1;
             while(j<k){
+                
                 int target=-(arr[j]+arr[k]);
                 if(arr[i]>target)
                     k--;
                 else if(arr[i]<target)
                     j++;
                 else{
+                    
                     List l= new ArrayList(Arrays.asList(arr[i],arr[j],arr[k]));
                     ans.add(l);
                     
@@ -26,11 +28,8 @@ class Solution {
                         k--;
                     k--;
                     
-                }
-                
-                // update untill we dont get different element
-                while(i<n-2 && arr[i]==arr[i+1])
-                       i++;                
+                }           
+                                
                     
                 
             }
