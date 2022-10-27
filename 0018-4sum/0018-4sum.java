@@ -1,8 +1,8 @@
 class Solution {
     public List<List<Integer>> fourSum(int[] arr, int target) {
        int n = arr.length;        
-      HashSet<List<Integer>> set = new HashSet<>();
-        
+      
+        List<List<Integer>> ans = new ArrayList<>();
         Arrays.sort(arr);
         
        
@@ -22,7 +22,7 @@ class Solution {
                     }else if(arr[l]+arr[r]>val){
                         r--;
                     }else{                                               
-                        set.add(Arrays.asList(arr[i],arr[j],arr[l],arr[r]));
+                        ans.add(Arrays.asList(arr[i],arr[j],arr[l],arr[r]));
                         while(l<r && arr[l]==arr[l+1])
                             l++;
                         while(l<r && arr[r]==arr[r-1])
@@ -38,7 +38,7 @@ class Solution {
          }
         
         
-        return new ArrayList(set);
+        return  ans;
     }
       
 }
