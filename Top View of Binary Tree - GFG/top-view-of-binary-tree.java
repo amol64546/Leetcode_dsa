@@ -132,40 +132,28 @@ class Solution
     static ArrayList<Integer> topView(Node root)
     {
          // add your code
-       TreeMap<Integer,Integer> map = new TreeMap<>();
-      
-            Queue<Pair> q = new ArrayDeque<>();
-            
-            q.offer(new Pair(0,root));
-                while(!q.isEmpty()){
-                     int n = q.size();
-                      for(int i=0; i<n; i++){
-                            Pair temp = q.poll();
-                            if(!map.containsKey(temp.hd))
-                                map.put(temp.hd,temp.node.data);
-                            
-                            if(temp.node.left!=null){
-                                q.offer(new Pair(temp.hd-1,temp.node.left));
-                            }
-                                    
-                            if(temp.node.right!=null){
-                                q.offer(new Pair(temp.hd+1,temp.node.right));
-                            }
-                                   
-                            
-                    }
-            }
-            
-            ArrayList<Integer> list = new ArrayList<>(map.values());
+       TreeMap<Integer,Pair> map = new TreeMap<>();
+      helper(root,0,0,map);
+            ArrayList<Integer> list = new ArrayList<>();
+            for(Pair p: map.values())
+                list.add(p.data);
             return list;
+    }
+    static void helper(Node root, int hd, int level, Map<Integer,Pair> map){
+        if(root==null) return;
+        if(!map.containsKey(hd) || level<map.get(hd).level)
+            map.put(hd,new Pair(root.data,level));
+            
+            helper(root.left,hd-1,level+1,map);
+            helper(root.right,hd+1,level+1,map);
     }
     
 }
 class Pair{
-    int hd;
-    Node node;
-    Pair(int hd, Node node){
-        this.hd = hd;
-        this.node = node;
+    int level;
+    int data;
+    Pair(int data, int level){
+        this.level = level;
+        this.data = data;
     }
 }
