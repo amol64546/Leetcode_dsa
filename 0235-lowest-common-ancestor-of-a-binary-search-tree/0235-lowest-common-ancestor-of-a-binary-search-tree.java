@@ -17,7 +17,7 @@ class Solution {
     
       TreeNode helper(TreeNode root,int a, int b){
                 if(root==null) return root;
-                if(root.val==a || root.val==b) return root;
+
                 if(root.val<a)
                         return helper(root.right,a,b);
                 if(root.val>b) 
