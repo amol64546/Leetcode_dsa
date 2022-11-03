@@ -17,7 +17,8 @@ class Solution {
     public int minDepth(TreeNode root) {
         if(root==null) return 0;
         int L = minDepth(root.left) , R = minDepth(root.right);
-        int m = Math.min(L,R);
-        return 1+ (m==0 ? Math.max(L,R):m);
+        int min = Math.min(L,R);
+        int max = Math.max(L,R);
+        return 1+ (min!=0 ? min : max);
     }
 }
