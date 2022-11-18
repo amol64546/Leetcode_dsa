@@ -1,3 +1,5 @@
-0) all possible profit, then max profit
-1) suffix min - sell stock
-**2) prefix max - buy stock**
+all possible pairs, then max profit - n*n
+​
+// local min/max
+max profit = right max (sell) - left min (buy)
+​
