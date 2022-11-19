@@ -45,22 +45,22 @@ class Solution
   //Function to sort the array using insertion sort algorithm.
   public void insertionSort(int arr[], int n)
   {
-      //code here
-      for(int i=0; i<n-1; i++){
-          int minIndex = i;
-          for(int j=i+1; j<n; j++){
-              if(arr[minIndex]>arr[j]){
-                  minIndex = j;    // update index
-              }
+     
+      for(int i=1; i<n; i++){
+          int temp = arr[i];
+          int j=i;
+          for( ; j>0;){
+              if(temp<arr[j-1]){
+                  arr[j] = arr[j-1];
+                  j--;
+              }else
+                break;
+                
+        
           }
-         // swap
-         if(minIndex!=i){
-             int temp = arr[minIndex];
-             arr[minIndex] = arr[i];
-            arr[i] = temp;
-         }
-         
-          
+          arr[j] = temp;
       }
+      
+      
   }
 }
