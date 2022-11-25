@@ -14,28 +14,21 @@ class Solution {
         if(head==null || head.next==null || left==right) return head;
         
         ListNode dummy = new ListNode();
-        dummy.next = head;
-        
-        ListNode x = dummy;
-        
+        dummy.next = head;        
+        ListNode pre = dummy;        
         int k = left;
-        while(k-->1){
-            x = x.next;            
-        }
+        while(k-->1)  pre = pre.next;                
         
-        ListNode prev = null, curr = x.next;
-        
-         k = (right-left+1);
-        
-        while(k-->0){     
-           ListNode temp = curr.next;
-            curr.next = prev;
-            prev= curr;
-            curr = temp; 
-        }
-        x.next.next = curr;
-        x.next = prev;
-        
+        ListNode start = pre.next, end = start.next;        
+        k = (right-left);        
+        while(k-->0){    
+            // swap
+           start.next = end.next;
+            end.next = pre.next;
+            pre.next = end;
+            end = start.next;           
+             
+        }       
         
         return dummy.next;
     }
