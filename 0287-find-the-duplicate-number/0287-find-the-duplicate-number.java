@@ -3,9 +3,9 @@ class Solution {
        int n=nums.length;
         int[] visited = new int[n];
         for(int i=0; i<n; i++){
-            int index=Math.abs(nums[i])-1;
+            int index=Math.abs(nums[i]);
             if(visited[index]<0){
-                return index+1;                
+                return index;                
             }
             else
                 visited[index]=-1;
