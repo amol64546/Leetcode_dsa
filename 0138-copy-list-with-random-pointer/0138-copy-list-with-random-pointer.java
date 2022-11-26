@@ -13,30 +13,29 @@ class Node {
 }
 */
 
-class Solution {
-    HashMap<Node,Node> map = new HashMap<>();     
-    Node add(Node head){        
-        Node dummy = new Node(0);
-        Node temp = dummy;
-         while(head!=null){                     
-            temp.next = new Node(head.val);
-            temp = temp.next;
-            map.put(head,temp);
-            head=head.next;
-        }              
-        return dummy.next;
-    }
-    void setRandom(Node temp, Node head){
-        while(head!=null){
-            temp.random = map.get(head.random);
-            temp=temp.next;
-            head=head.next;
-        }
-        
-    }
+class Solution {    
     public Node copyRandomList(Node head) {       
-       Node newHead = add(head);           
-        setRandom(newHead,head);  
-        return newHead;
+        if(head==null) return null;   
+      Node curr = head;
+      while(curr!=null){          
+         Node temp = curr.next;
+          curr.next = new Node(curr.val);
+          curr.next.next = temp;
+          curr =temp;
+      }
+      curr = head;
+      while(curr!=null){
+         curr.next.random = (curr.random==null) ? null:curr.random.next;
+         curr=curr.next.next;
+      }
+
+      Node orig=head, copy=head.next; head=copy;
+      while(orig!=null){
+          orig.next=orig.next.next;
+          copy.next=(copy.next==null)? null:copy.next.next;
+          orig=orig.next;
+          copy=copy.next;
+      }
+      return head;
     }
 }
