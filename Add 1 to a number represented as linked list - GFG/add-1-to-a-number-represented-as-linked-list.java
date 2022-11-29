@@ -64,25 +64,23 @@ class Solution
     { 
         head = reverse(head);
         Node curr=head, prev=null;
-        int flag = 0;
+       
         while(curr!=null){
             if(curr.data==9){
-                flag = curr.data+1;
                 curr.data = 0;
                 prev = curr;
                 curr=curr.next;
             }
             else{
-                flag = curr.data+1;
                 curr.data +=1;
-                break;
+                return reverse(head);
             }
             
             
         }
-        if(flag>9){
+      
             prev.next = new Node(1);
-        }
+       
         return reverse(head);
         
     }
