@@ -10,34 +10,26 @@
  */
 class Solution {
     public ListNode swapNodes(ListNode head, int k) {
-          int s=k;
-        int n = 0;
-        ListNode curr=head;
-        while(curr!=null){
-            n++;
-            curr=curr.next;
-        }
-        int e=n-k+1;                         
-        if(s==e)  return head;    // both nodes are same
-    ListNode dummy = new ListNode(0);
-	dummy.next = head;
-	
-     // traverse
+         if(head==null || head.next==null) return head;
+         ListNode dummy = new ListNode();
+         dummy.next = head;
         ListNode prev1=dummy, curr1=head;
-        while(s-->1){
-          prev1=curr1;
-          curr1=curr1.next;
-        }       
-        ListNode prev2=dummy, curr2=head;
-        while(e-->1){
+        while(k-->1){
+            prev1=curr1;
+            curr1=curr1.next;
+        }
+
+        ListNode temp=dummy, curr=curr1;
+        ListNode prev2=dummy, curr2=dummy.next;
+        while(curr.next!=null){
             prev2=curr2;
             curr2=curr2.next;
+            curr=curr.next;
         }
-		
          // swap		
         prev1.next = curr2;  		
         prev2.next = curr1;                            
-        ListNode temp = curr1.next;
+         temp = curr1.next;
         curr1.next = curr2.next;
         curr2.next = temp;
 		
