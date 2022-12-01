@@ -42,11 +42,25 @@ class Solution
     //Function to return k largest elements from an array.
     public static ArrayList<Integer> kLargest(int arr[], int n, int k)
     {
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        Arrays.sort(arr);
-        for(int i=n-1, j=0; j<k; i--,j++){
-            list.add(arr[i]);
-        }
+        var list = new ArrayList<Integer>();
+        
+       for(int i=0; i<k; i++){
+           list.add(arr[i]);
+       }
+       Collections.sort(list, (Integer a, Integer b)-> b-a);
+       for(int i=k; i<n; i++){
+           for(int j=0; j<k; j++){
+               if(arr[i]>list.get(j)){
+                   list.add(j,arr[i]);
+                    list.remove(k);
+                    break;
+               }
+               
+           }
+           
+       }
+
+       
      return list;   
     }
 }
