@@ -16,15 +16,23 @@
 class Solution {
     
     public int sumNumbers(TreeNode root) {
-         return helper(root,0);
+         return pathSum(root,0);
     }
     
-     int helper(TreeNode root, int sum){
-                if(root==null) return 0;
-               sum = sum*10 + root.val;
-                if(root.left==null && root.right==null)
-                        return sum;
-               
-                return helper(root.left,sum)+helper(root.right,sum);
+     int pathSum(TreeNode root, int n){
+         // return formed root to leaf number
+         if(root==null) return 0;
+        
+         
+         // forming root to leaf number
+         n = n*10 + root.val;          
+          
+         // return formed number from leaf node
+         if(root.left==null && root.right==null)
+             return n;
+       
+         // return sum of all formed numbers
+         return pathSum(root.left,n) + pathSum(root.right,n);
+         
         }
 }
