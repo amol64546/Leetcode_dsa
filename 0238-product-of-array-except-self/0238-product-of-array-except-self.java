@@ -3,22 +3,19 @@ class Solution {
         
          int n = nums.length;
         
-         int[] suffixProd = new int[n];   
-          suffixProd[n-1] = 1;
+         int[] output = new int[n];   
+          output[n-1] = 1;
         
         for(int i=n-2; i>=0; i--){
-            suffixProd[i] = suffixProd[i+1] * nums[i+1];
+            output[i] = output[i+1] * nums[i+1];
+        }       
+
+        
+        for(int i=1; i<n; i++){           
+            output[i] *= nums[i-1];
+            nums[i] *= nums[i-1]; 
         }
-        
-        
-        int prefixProd = 1;
-        
-        for(int i=0; i<n; i++){
-            int temp = prefixProd * nums[i];
-            nums[i] = prefixProd * suffixProd[i];
-            prefixProd = temp; 
-        }
-        return nums;
+        return output;
         
     }
 }
