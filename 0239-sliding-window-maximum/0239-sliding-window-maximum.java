@@ -1,28 +1,34 @@
 class Solution {
-    public int[] maxSlidingWindow(int[] arr, int k) {
-        Deque<Integer> dq = new ArrayDeque<>();
-        int n = arr.length;
-
-        int[] ans = new int[n-k+1];      
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int n = nums.length;
+       Deque<Integer> d = new ArrayDeque<>();
+        int[] ans = new int[n-k+1];
+        int left = 0, right=0;
         
-       
-        for(int i=0; i<n; i++){
-            // out of scope, remove first
-            if(!dq.isEmpty() && dq.peek()<i-k+1)
-                dq.removeFirst();
-            
-            // removing smaller than curr in window, remove last
-            while(!dq.isEmpty() && arr[i]>=arr[dq.peekLast()])
-                dq.removeLast();
-            
-            // add curr to window, add at last
-            dq.addLast(i);
-            
-            // max of curr window, peek first element
-            if(i-k+1 >= 0)
-                ans[i-k+1] = arr[dq.peek()];
+        for(; right<k; right++){  // window
+                // max at front
+               while(!d.isEmpty() && nums[right]>nums[d.peekLast()])
+                   d.removeLast();
+               d.addLast(right);
+        }
+                   
+        ans[left++] = nums[d.peekFirst()];
+                   
+        for(; right<n; right++){ // slide window
+               // remove out of scope from left
+               if(!d.isEmpty() && d.peekFirst()<=left-1)
+                   d.removeFirst();
+             // removing max from right
+               while(!d.isEmpty() && nums[right]>=nums[d.peekLast()])
+                   d.removeLast();
+               d.addLast(right);
+                   
+              ans[left++] = nums[d.peekFirst()];
         }
         return ans;
+               
+               
+               
         
     }
 }
