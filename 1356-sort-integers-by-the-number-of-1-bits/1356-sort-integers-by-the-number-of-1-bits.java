@@ -5,13 +5,10 @@ class Solution {
         for(int i=0; i<n; i++)
             nums[i] = Integer.valueOf(arr[i]);
         
-        Arrays.sort(nums, new Comparator<Integer>(){
-            @Override
-            public int compare(Integer a, Integer b){
+        Arrays.sort(nums, (Integer a, Integer b) -> {
                 if(Integer.bitCount(a)==Integer.bitCount(b))
                     return a-b;
-                return Integer.bitCount(a)-Integer.bitCount(b);
-            }
+                return Integer.bitCount(a)-Integer.bitCount(b);            
         });
                 
         
