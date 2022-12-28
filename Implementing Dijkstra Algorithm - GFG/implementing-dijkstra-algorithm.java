@@ -59,6 +59,17 @@ class Solution
 {
     //Function to find the shortest distance of all the vertices
     //from the source vertex S.
+    static class Pair implements Comparable<Pair>{
+        int v;
+        int wt;
+        Pair(int v, int wt){
+            this.v = v;
+            this.wt = wt;
+        }
+        public int compareTo(Pair that){
+            return this.wt - that.wt;
+        }
+    }
     static int[] dijkstra(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj, int S)
     {
  
@@ -67,34 +78,21 @@ class Solution
 	  minDist[S] = 0;
 	
 	  boolean[] visited = new boolean[V];
-	  PriorityQueue<ArrayList<Integer>> q = new PriorityQueue<>(
-		  (ArrayList<Integer> a, ArrayList<Integer> b) -> 
-			  a.get(1)-b.get(1)
-	  );
-	  
-	  ArrayList<Integer> pair = new ArrayList<Integer>();
-	  pair.add(S);
-	  pair.add(0);
-	  q.offer(pair);	  
-	  
+	  PriorityQueue<Pair> q = new PriorityQueue<>();
+	 
+	  q.offer(new Pair(S,0));  
 	  
 	  while(!q.isEmpty()){
-		  ArrayList<Integer> currList= q.poll();		  
-		  int currV = currList.get(0);		  
+		  int u = q.poll().v;
+		  if(visited[u]) continue;
+		  visited[u] = true;	 
 		  
-		  if(visited[currV]) continue;
-		  
-		  visited[currV] = true;		 
-		  
-		  for(ArrayList<Integer> list : adj.get(currV)){			  
+		  for(ArrayList<Integer> list : adj.get(u)){			  
 				  int nbr = list.get(0);
 				  int wt = list.get(1);
-				 if(minDist[nbr] > minDist[currV] + wt)	{
-					 minDist[nbr] = minDist[currV] + wt;
-					ArrayList<Integer> p = new ArrayList<Integer>();
-					  p.add(nbr);
-					  p.add(minDist[nbr]);
-					  q.offer(p);
+				 if(minDist[nbr] > minDist[u] + wt)	{
+					 minDist[nbr] = minDist[u] + wt;
+					  q.offer(new Pair(nbr, minDist[nbr]));
 				 }		  
 		  }	
 		   
