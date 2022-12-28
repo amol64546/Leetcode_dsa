@@ -74,26 +74,23 @@ class Solution
     {
  
 	  int[] minDist = new int[V];
-	  Arrays.fill(minDist, Integer.MAX_VALUE);
-	  minDist[S] = 0;
-	
-	  boolean[] visited = new boolean[V];
+	  Arrays.fill(minDist, -1);
+	  
 	  PriorityQueue<Pair> q = new PriorityQueue<>();
 	 
 	  q.offer(new Pair(S,0));  
 	  
 	  while(!q.isEmpty()){
-		  int u = q.poll().v;
-		  if(visited[u]) continue;
-		  visited[u] = true;	 
-		  
+	      Pair p = q.poll();
+		  int u = p.v;
+		  if(minDist[u]!=-1) continue;
+		  minDist[u] = p.wt;
+		
 		  for(ArrayList<Integer> list : adj.get(u)){			  
 				  int nbr = list.get(0);
 				  int wt = list.get(1);
-				 if(minDist[nbr] > minDist[u] + wt)	{
-					 minDist[nbr] = minDist[u] + wt;
-					  q.offer(new Pair(nbr, minDist[nbr]));
-				 }		  
+				q.offer(new Pair(nbr, wt + p.wt));
+				 	  
 		  }	
 		   
 	  }
