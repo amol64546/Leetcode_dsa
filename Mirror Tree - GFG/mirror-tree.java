@@ -127,14 +127,24 @@ class Node
 
 class Solution {
     // Function to convert a binary tree into its mirror tree.
-    void mirror(Node node) {
-        // Your code here
-        if(node==null) return;
-        Node temp = node.left;
-        node.left = node.right;
-        node.right = temp;
+    void mirror(Node root) {
+        if(root==null) return;
+        Queue<Node> q = new ArrayDeque<>();
+        q.offer(root);
+        while(!q.isEmpty()){
+            Node curr = q.poll();
+            
+            // swap
+            Node temp  = curr.left;
+            curr.left = curr.right;
+            curr.right = temp;
+            
+            if(curr.left!=null)
+                q.offer(curr.left);
+            if(curr.right!=null)
+                q.offer(curr.right);            
+        }
         
-        mirror(node.left);
-        mirror(node.right);
+        
     }
 }
