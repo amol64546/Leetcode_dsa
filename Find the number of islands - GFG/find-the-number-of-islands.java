@@ -30,38 +30,41 @@ class GFG {
 class Solution {
     // Function to find the number of islands.
     public int numIslands(char[][] grid) {
+        HashSet<String> set = new HashSet<>();
         int count=0;
         int n = grid.length, m = grid[0].length;
 		for(int i=0; i<n; i++){
 			for(int j=0; j<m; j++){
-				if(grid[i][j] == '1'){
-					DFS(grid,i,j);
-					count++;
-				}
+				if(explore(grid,i,j,set))
+				    count++;
 			}
 		}
 		return count;
     }
     
-    public void DFS(char[][] grid, int r, int c){
-		if(r<0 || r>=grid.length || c<0 || c>=grid[0].length)
-			return;
-		if(grid[r][c]=='0') return;
-		grid[r][c] = '0';
+    public boolean explore(char[][] grid, int r, int c,HashSet<String> set){
+        // out of bounds case
+        boolean rowInbounds = 0<=r && r<grid.length;
+        boolean colInbounds = 0<=c && c<grid[0].length;
+		if(!rowInbounds || !colInbounds) return false;
 		
-		// vertical
-		DFS(grid,r+1,c);
-		DFS(grid,r-1,c);
+		// water case
+		if(grid[r][c]=='0') return false;
 		
-		// horizontal
-		DFS(grid,r,c+1);
-		DFS(grid,r,c-1);
+		String pos = ""+r+","+c;
+		// visited case
+		if(set.contains(pos)) return false;
+		set.add(pos);
 		
-		// diagonal
-		DFS(grid,r+1,c+1);
-		DFS(grid,r-1,c-1);
-		DFS(grid,r+1,c-1);
-		DFS(grid,r-1,c+1);
+		// exploring
+		int[][] directions = {{1,0},{-1,0},{0,1},{0,-1},{1,1},{-1,-1},{-1,1},{1,-1}};
+		for(int[] dir: directions){
+		    int x = dir[0];
+		    int y = dir[1];
+		    explore(grid,r+x,c+y,set);
+		}
+		
+		return true;
 		
 		
 	}
