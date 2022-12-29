@@ -17,8 +17,8 @@ class Solution {
     public int inorderSucc(TreeNode root){
         int min = root.val;
         
-        while(root.left!=null){
-            min = root.left.val;
+        while(root!=null){
+            min = root.val;
             root = root.left;
         }
         return min;
