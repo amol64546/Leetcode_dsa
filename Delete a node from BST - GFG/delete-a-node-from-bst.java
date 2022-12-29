@@ -112,8 +112,8 @@ class Tree {
     
     static int inorderSucc(Node node){
         int min = node.data;
-        while(node.left != null){
-            min = node.left.data;
+        while(node != null){
+            min = node.data;
             node = node.left;
         }
         return min;
