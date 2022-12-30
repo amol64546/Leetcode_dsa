@@ -21,9 +21,11 @@ class Solution {
     public boolean helper(TreeNode root, long low, long high){
         if(root==null) return true;
         
+        if(low>root.val || root.val>high)
+            return false;        
         
-        return (low<=root.val && root.val<=high) && 
-            helper(root.left,low,root.val-1L) &&
-            helper(root.right,root.val+1L,high);
+        return helper(root.right,root.val+1L,high) &&
+            helper(root.left,low,root.val-1L);
+            
     }
 }
