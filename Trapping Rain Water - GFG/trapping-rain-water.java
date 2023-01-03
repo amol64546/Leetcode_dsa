@@ -49,11 +49,12 @@ class Solution{
             suffix[i] = Math.max(arr[i],suffix[i+1]);
         }
         
-        int prefix = Integer.MIN_VALUE;
+        int prefix = arr[0];
         
         for(int i=0; i<n; i++){
             prefix = Math.max(prefix,arr[i]);
             ans += Math.min(prefix,suffix[i]) - arr[i];
+            
         }
         
         return ans;
