@@ -1,48 +1,46 @@
 class Solution {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
-        List<List<Integer>> graph = new ArrayList<>();
-        List<Integer> ans = new ArrayList<Integer>();
-        for(int i=0; i<numCourses; i++){
-            graph.add(new ArrayList<Integer>());
-        }
+        
+        
+        
+        
+        int[] res = new int[numCourses];
+        int index=0;
         
         // dealing with dependencies
         int[] dep = new int[numCourses];
         
-        for(int[] course: prerequisites){
-            graph.get(course[1]).add(course[0]);
+        for(int[] course: prerequisites){           
             dep[course[0]]++;
         }
         
-        // startin dfs
-        Stack<Integer> st = new Stack<>();
+       
+        Queue<Integer> q = new LinkedList<Integer>();
         
         for(int i=0; i<numCourses; i++){
             if(dep[i]==0){
-                 st.push(i);
+                res[index++] = i;
+                  q.offer(i);
             }
         }
         
-        while(!st.empty()){
-            int curr = st.pop();
-			ans.add(curr);
-            List<Integer> list = graph.get(curr);
-            for(int nbr: list){                
-                dep[nbr]--;                
-                if(dep[nbr]==0){
-                    st.push(nbr);
+        while(!q.isEmpty()){
+            int curr = q.poll();			
+            
+             for(int i=0; i<prerequisites.length; i++){  
+                 int src = prerequisites[i][1];
+			    int nbr = prerequisites[i][0];
+                if(src==curr){   // checking for nbrs in edges graph
+                     dep[nbr]--;                
+                    if(dep[nbr]==0){
+                        res[index++] = nbr;
+                         q.offer(nbr);
+                    }
                 }
             }            
         }
-		int[] res = new int[numCourses];
-        for(int i=0; i<numCourses; i++){
-			
-            if(dep[i]>0){
-                 return new int[]{};
-            }
-        }
-		for(int i=0; i<ans.size(); i++)
-			res[i] = ans.get(i);
-        return res;
+		
+        
+        return (index==numCourses) ? res : new int[0];
     }
 }
