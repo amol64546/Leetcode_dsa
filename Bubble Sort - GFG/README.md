@@ -3,21 +3,21 @@
 <div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an Integer <strong>N</strong> and a list <strong>arr</strong>. Sort the array using bubble sort algorithm.</span><br>
 <span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
-<pre><span style="font-size:18px"><strong>Input</strong>: 
+<pre style="position: relative;"><span style="font-size:18px"><strong>Input</strong>: 
 N = 5
 arr[] = {4, 1, 3, 9, 7}
 <strong>Output</strong>: 
 1 3 4 7 9</span>
-</pre>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><span style="font-size:18px"><strong>Example 2:</strong></span></p>
 
-<pre><span style="font-size:18px"><strong>Input</strong>:
+<pre style="position: relative;"><span style="font-size:18px"><strong>Input</strong>:
 N = 10 
 arr[] = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
 <strong>Output</strong>: 
 1 2 3 4 5 6 7 8 9 10</span>
-</pre>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <div><br>
 <strong><span style="font-size:18px">Your Task:&nbsp;</span></strong></div>
