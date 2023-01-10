@@ -25,9 +25,9 @@ class Solution {
     static long nthFibonacci(long n){
         
         long f1=0, f2=1, f3=0;
-        
+        long mod = (long) 1e9+7;
         for(long i=2; i<=n; i++){
-            f3 = (f1 + f2) % 1000000007;
+            f3 = (f1 + f2) % mod;
             f1 = f2;
             f2 = f3;
         }
