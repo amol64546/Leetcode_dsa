@@ -5,7 +5,7 @@
 <p><br>
 <strong><span style="font-size:18px">Example 1:</span></strong></p>
 
-<pre><span style="font-size:18px"><strong>Input:</strong>
+<pre style="position: relative;"><span style="font-size:18px"><strong>Input:</strong>
 N = 5
 arr[] = {4, 1, 3, 9, 7}</span>
 <span style="font-size:18px"><strong>Output:</strong>
@@ -16,15 +16,15 @@ Select 1. Array becomes <strong>1</strong> 4 3 9 7.
 Select 3. Array becomes <strong>1 3</strong> 4 9 7.
 Select 4. Array becomes <strong>1 3 4</strong> 9 7.
 Select 7. Array becomes <strong>1 3 4 7</strong> 9.
-Select 9. Array becomes <strong>1 3 4 7 9</strong>.</span></pre>
+Select 9. Array becomes <strong>1 3 4 7 9</strong>.</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><strong><span style="font-size:18px">Example 2:</span></strong></p>
 
-<pre><span style="font-size:18px"><strong>Input:</strong>
+<pre style="position: relative;"><span style="font-size:18px"><strong>Input:</strong>
 N = 10
 arr[] = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1}</span>
 <span style="font-size:18px"><strong>Output:</strong>
-1 2 3 4 5 6 7 8 9 10</span></pre>
+1 2 3 4 5 6 7 8 9 10</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><br>
 <span style="font-size:18px"><strong>Your Task: &nbsp;</strong><br>
