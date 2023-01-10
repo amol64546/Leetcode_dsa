@@ -60,30 +60,25 @@ class Solution
     void merge(int arr[], int l, int m, int r)
     {
          // Your code here
-         int n1 = m+1-l;
-         int n2 = r-m;
-         int[] L = new int[n1];
-         int[] R = new int[n2];
-         for(int i=0; i<n1; i++)
-             L[i] = arr[l+i];
-         
-         for(int i=0; i<n2; i++)
-             R[i] = arr[m+1+i];
-         
-         int i=0, j=0;
-         int k = l;
-         while(i<n1 && j<n2){
-             if(L[i]<R[j])
-                arr[k++] = L[i++];
+         int[] temp = new int[r-l+1];
+         int i=l, j=m+1;
+         int k = 0;
+         while(i<=m && j<=r){
+             if(arr[i]<=arr[j])
+                temp[k++] = arr[i++];
              else
-                arr[k++] = R[j++];
+                temp[k++] = arr[j++];
              
          }
-          while(i<n1)
-                arr[k++] = L[i++];
+          while(i<=m)
+                temp[k++] = arr[i++];
          
-          while(j<n2)
-                arr[k++] = R[j++];
+          while(j<=r)
+                temp[k++] = arr[j++];
+            
+        for(int p=l,t=0; p<=r; p++,t++){
+            arr[p] = temp[t];
+        }
          
          
     }
