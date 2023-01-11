@@ -41,21 +41,18 @@ class Solution
         quickSort(arr,low,pi-1);
         quickSort(arr,pi+1,high);
     }
-    static int partition(int arr[], int low, int high)
+    static int partition(int arr[], int l, int r)
     {
-        // your code here
-        int pivot = arr[high];
-        int i=low, j=low;
-        while(i<=high){
-            if(arr[i]<=pivot){
+         int pivot = arr[r];
+        int i=l;
+        for(int j=l; j<=r; j++){
+            if(arr[j]<=pivot){
                 int temp = arr[j];
                 arr[j] = arr[i];
                 arr[i] = temp;
-                i++; j++;
-            }else{
-                i++;
+                i++;  
             }
         }
-        return j-1;
+        return i-1;
     } 
 }
