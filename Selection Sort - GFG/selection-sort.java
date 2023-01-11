@@ -35,26 +35,30 @@ class Solution
 {
 	int  select(int arr[], int i)
 	{
-        return 0;
+        // code here such that selectionSort() sorts arr[]
+        int minInd = i;
+        for(int j=i+1; j<arr.length; j++){
+	            if(arr[j] < arr[minInd])
+	                minInd = j;
+	        }
+	        return minInd;
 	}
 	
 	void selectionSort(int arr[], int n)
 	{
 	    //code here
 	    for(int i=0; i<n-1; i++){
-	        int ind = i;
-            for(int j=i+1; j<n; j++){
-                if(arr[ind]>arr[j]){
-                    ind = j;
-                }
-            }
-            if(ind!=i){
-	            int temp = arr[ind];
-	            arr[ind] = arr[i];
+	       
+	        // find value < curr 
+	        // ie min value index from unsorted part
+	        int minInd = select(arr,i);
+	        // swapping found min ele with curr
+	        if(minInd != i){
+	            int temp = arr[minInd];
+	            arr[minInd]  = arr[i];
 	            arr[i] = temp;
 	        }
-        }
-	        
-	    
+	            
+	    }
 	}
 }
