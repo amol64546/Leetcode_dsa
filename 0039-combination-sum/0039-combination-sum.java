@@ -1,26 +1,26 @@
 class Solution {
-    List<List<Integer>> res = new ArrayList<>();
+    List<List<Integer>> mainList = new ArrayList<>();
+    
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         
-        backtrack(new ArrayList<Integer>(),candidates,0,target);
-        return res;
+        combination(new ArrayList<Integer>(),candidates,0,target);
+        return mainList;
     }
     
-    public void backtrack(ArrayList<Integer> list, int[] arr, int start, int target){
-       
-        if(target<0) return; 
-        
-        // got one of solutions
+    public void combination(ArrayList<Integer> list, int[] arr, int i, int target){       
         if(target==0){
-            res.add(new ArrayList<>(list));
+            mainList.add(new ArrayList<>(list));
             return;
-        }
+        } 
+        if(target<0 || i==arr.length) return; 
         
-        for(int i=start; i<arr.length; i++){
-            list.add(arr[i]);                      
-            backtrack(list,arr,i,target-arr[i]);
-            // removing last ele that we have added  // backtrack
-            list.remove(list.size()-1); 
-        }
+        list.add(arr[i]);                      
+        combination(list,arr,i,target-arr[i]);        
+        list.remove(list.size()-1); 
+        
+        combination(list,arr,i+1,target);   
+        
+        
+        
     }
 }
