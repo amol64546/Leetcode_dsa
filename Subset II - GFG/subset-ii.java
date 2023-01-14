@@ -60,22 +60,7 @@ class Solution {
          mainList = new ArrayList<>();
         ArrayList<Integer> list = new ArrayList<>();
         combination(nums,0,list);
-        
-        
-        
-         Collections.sort(mainList, (o1, o2) -> {
-                int m = Math.min(o1.size(), o2.size());
-                
-                for (int i = 0; i < m; i++) {
-                    if(i==o1.size() || i==o2.size()) return o1.size()-o2.size();
-                    
-                    if (o1.get(i) == o2.get(i))  continue;
-                    else return o1.get(i) - o2.get(i);
-                    
-                }
-                return o1.size()-o2.size();
-            });
-        
+ 
         return mainList;
     }
     
