@@ -83,12 +83,14 @@ class Solution
          if(i==A.size()) return;
          if(sum<0) return;
          
-         list.add(A.get(i));
-         combination(A,i,sum-A.get(i),list);
+         for(int n=i; n<A.size(); n++){
+             if(n>i && A.get(n)==A.get(n-1)) continue;
+             list.add(A.get(n));
+            combination(A,n,sum-A.get(n),list);
+            list.remove(list.size()-1);
+         }
          
-         list.remove(list.size()-1);
          
-         while(i<A.size()-1 && A.get(i)==A.get(i+1)) i++;
-         combination(A,i+1,sum,list);
+        
      }
 }
