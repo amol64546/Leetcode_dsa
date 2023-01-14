@@ -52,6 +52,10 @@ class GFG {
 
 // User function Template for Java
 
+
+
+// User function Template for Java
+
 class Solution {
     public static List<List<Integer>> combinationSum2(int[] a, int s) {
          mainList = new ArrayList<>();
@@ -63,21 +67,22 @@ class Solution {
     
     static  List<List<Integer>> mainList;
      
-     static void combination(int[] A,int i, int sum,List<Integer> list){
+     static void combination(int[] A,int n, int sum,List<Integer> list){
          
          if(sum == 0){
              mainList.add(new ArrayList<>(list));
              return;
          }
-         if(i==A.length || sum<0) return;
+         if(n==A.length || sum<0) return;
         
-         
-         for(int n=i; n<A.length; n++){
-             if(n>i && A[n]==A[n-1]) continue;
             list.add(A[n]);
             combination(A,n+1,sum-A[n],list);
             list.remove(list.size()-1);
-         }
+            
+            while(n<A.length-1 && A[n]==A[n+1]) n++;
+            
+            combination(A,n+1,sum,list);
+         
          
          
         
