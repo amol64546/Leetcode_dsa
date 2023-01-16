@@ -1,20 +1,18 @@
 class Solution {
     public List<Integer> getRow(int rowIndex) {
-        List<Integer> list = new ArrayList<>();
-        recur(rowIndex,list);
-        return list;
-    }
-    
-    public void recur(int r,List<Integer> list){
-        if(r==0){
-            list.add(1);
-            return;
+        int n = rowIndex+1;
+        int[][] pascal = new int[n][n];
+        
+        for(int i=0; i<n; i++){
+            for(int j=0; j<i+1; j++){                
+                if(j==0 || i==j) pascal[i][j] = 1;               
+                else pascal[i][j] = pascal[i-1][j] + pascal[i-1][j-1];                           
+            }
         }
-         recur(r-1,list);
-        for(int i=list.size()-1;i>=1; i--){
-            int val = list.get(i-1)+list.get(i);
-            list.set(i,val);
-        }               
-        list.add(1);
+        List<Integer> list = new ArrayList<>();
+        for(int i=0; i<n; i++){
+            list.add(pascal[n-1][i]);
+        }
+        return list;
     }
 }
