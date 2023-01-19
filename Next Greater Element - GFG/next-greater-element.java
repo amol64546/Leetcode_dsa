@@ -32,19 +32,20 @@ class GFG {
 class Solution
 {
     //Function to find the next greater element for each element of the array.
-    public static long[] nextLargerElement(long[] nums, int n)
+    public static long[] nextLargerElement(long[] arr, int n)
     { 
-       
-        var st = new Stack<Integer>();
-        long[] res = new long[n];
-        Arrays.fill(res,-1);
+        // Your code here
+        Stack<Long> st = new Stack<>();
+        long[] ans = new long[n];
         
-        for(int i=0; i< n; i++){
-            while(!st.empty() && nums[i]>nums[st.peek()])
-                res[st.pop()] = nums[i];
-            st.push(i);
+        for(int i=n-1; i>=0; i--){
+            while(!st.isEmpty() && arr[i]>=st.peek()){
+                st.pop();
+            }
+            if(st.empty()) ans[i] = -1;
+            else ans[i] = st.peek();
+            st.push(arr[i]);
         }
-        return res;
-    }
+        return ans;
+    } 
 }
-    
