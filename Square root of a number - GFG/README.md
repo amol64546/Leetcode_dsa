@@ -6,20 +6,20 @@
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
-<pre><span style="font-size:18px"><strong>Input:
+<pre style="position: relative;"><span style="font-size:18px"><strong>Input:
 </strong>x = 5
 <strong>Output: </strong>2<strong>
 Explanation: </strong>Since, 5 is not a perfect 
 square, floor of square_root of 5 is 2.</span>
-</pre>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><span style="font-size:18px"><strong>Example 2:</strong></span></p>
 
-<pre><span style="font-size:18px"><strong>Input:
+<pre style="position: relative;"><span style="font-size:18px"><strong>Input:
 </strong>x = 4
 <strong>Output: </strong>2<strong>
 Explanation: </strong>Since, 4 is a perfect 
-square, so its square root is 2.</span></pre>
+square, so its square root is 2.</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p>&nbsp;</p>
 
