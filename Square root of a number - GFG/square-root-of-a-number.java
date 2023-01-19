@@ -26,23 +26,20 @@ this function*/
 // x: element to find square root
 class Solution
 {
-     long floorSqrt(long x)
+     long floorSqrt(long n)
 	 {
 		// Your code here
-		long l=1, r=x/2;
-		while(l<=r){
-		    long mid=(l+r)/2;
-		    if(mid*mid<x){
-		        if((mid+1)*(mid+1)>x){
-		            return mid;
-		        }else
-		            l=mid+1;
-		    }else if(mid*mid>x){
-		        r=mid-1;
-		    }else{
-		        return mid;
-		    }
-		}
-		return 1;
+		long l=1, r=n/2;
+        while(l<=r){
+        	long mid = l+(r-l)/2;	
+        	if(mid*mid==n) return mid;
+        	else if(mid*mid>n) r=mid-1;
+        	else {
+        		if((mid+1)*(mid+1)>n) return mid;
+        		l=mid+1;
+        	}
+        }
+        return 1;
+
 	 }
 }
