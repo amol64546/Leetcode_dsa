@@ -1,15 +1,15 @@
 class Solution {
     
     static int lis(int[][] arr, int n){
-		int[] dp = new int[n];
+		
 		TreeSet<Integer> ts = new TreeSet<>();
 		for(int i=0; i<n; i++){
 			Integer top = ts.ceiling(arr[i][1]);
 			if(top!=null) ts.remove(top);
 			ts.add(arr[i][1]);
-			dp[i] = ts.size();
+			
 		}
-		return dp[n-1];
+		return ts.size();
 	}
     
     public int maxEnvelopes(int[][] arr) {
