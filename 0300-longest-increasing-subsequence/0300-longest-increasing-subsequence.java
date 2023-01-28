@@ -1,17 +1,16 @@
 class Solution {
     public int lengthOfLIS(int[] arr) {
         int n = arr.length;
-        int[] dp = new int[n];
+        TreeSet<Integer> ts = new TreeSet<>();
+        
 		for(int i=0; i<n; i++){
-			int ans =0;
-			for(int j=i-1; j>=0; j--){
-				if(arr[j]>=arr[i]) continue;
-				ans = Math.max(ans,dp[j]);
-			}
-			dp[i] = ans+1;
+            Integer ceil = ts.ceiling(arr[i]);
+            if(ceil!=null) ts.remove(ceil);
+			ts.add(arr[i]);
 		}
-		int max = 0;
-        for(int val: dp) max=Math.max(max,val);
-        return max;
+        return ts.size();
+		
+
+       
     }
 }
