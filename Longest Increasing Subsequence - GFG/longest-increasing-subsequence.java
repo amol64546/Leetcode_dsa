@@ -43,8 +43,27 @@ class Solution
     static int longestSubsequence(int n, int a[])
     {
         // code here
-        int[][] dp = new int[n][n+1];
-        return memo(a,n,0,-1,dp);
+        // int[][] dp = new int[n][n+1];
+        // return memo(a,n,0,-1,dp);
+        
+        return tab(a,n);
+    }
+    
+    static int tab(int[] a, int n){
+        int[][] dp = new int[n+1][n+1];
+        
+        for(int curr=n-1; curr>=0; curr--){
+            for(int prev=curr-1; prev>=-1; prev--){
+                int take=0;
+                if(prev == -1 || a[curr] > a[prev]){
+                    take = 1 + dp[curr+1][curr+1];
+                }
+                int notTake = dp[curr+1][prev+1];
+                
+                dp[curr][prev+1] = Math.max(notTake, take);
+            }
+        }
+        return dp[0][0];
     }
     
     static int memo(int[] a,int n,int curr,int prev,int[][] dp){
