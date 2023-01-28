@@ -50,20 +50,23 @@ class Solution
     }
     
     static int tab(int[] a, int n){
-        int[][] dp = new int[n+1][n+1];
+        
+        int[] currRow = new int[n+1];
+        int[] nextRow = new int[n+1];
         
         for(int curr=n-1; curr>=0; curr--){
             for(int prev=curr-1; prev>=-1; prev--){
                 int take=0;
                 if(prev == -1 || a[curr] > a[prev]){
-                    take = 1 + dp[curr+1][curr+1];
+                    take = 1 + nextRow[curr+1];
                 }
-                int notTake = dp[curr+1][prev+1];
+                int notTake = nextRow[prev+1];
                 
-                dp[curr][prev+1] = Math.max(notTake, take);
+                currRow[prev+1] = Math.max(notTake, take);
             }
+            nextRow = currRow;
         }
-        return dp[0][0];
+        return nextRow[0];
     }
     
     static int memo(int[] a,int n,int curr,int prev,int[][] dp){
