@@ -1,12 +1,15 @@
 class Solution {
     public int rob(int[] nums) {
          int n = nums.length;
-        int[] dp = new int[n+2];
-        for(int i=n-1; i>=0; i--){
-            int oneStep = dp[i+1];
-            int twoStep = dp[i+2] + nums[i];
-            dp[i] = Math.max(oneStep,twoStep) ;
+        int prevInc = nums[0], prevExc=0;
+        
+        for(int i=1; i<n; i++){
+            int exc = Math.max(prevInc,prevExc);  // have choice to inc or exc, take max
+            int inc = nums[i] + prevExc ;   // dont have choice, need to exc
+            prevExc = exc;
+            prevInc = inc;
+           
         }
-        return Math.max(dp[0],dp[1]);
+        return Math.max(prevExc,prevInc);
     }
 }
