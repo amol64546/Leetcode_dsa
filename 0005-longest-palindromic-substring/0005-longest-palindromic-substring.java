@@ -1,27 +1,24 @@
 class Solution {
-    String ans = "";
-    int maxLen=0;
-
-    public void extendPalindrome(String s, int l, int r){       
-                while(l>=0 && r<s.length() && s.charAt(l)==s.charAt(r)){
-                    int len=r-l+1;
-                    if(len>maxLen){
-                        ans = s.substring(l,r+1);
-                        maxLen = len;
-                    }
-                    l--; r++;
-                } 
-    }
-    public String longestPalindrome(String s) {
-        int n = s.length();
-        if(n==1) return s;
-        for(int i=0; i<n; i++){
-            // odd                                             
-            extendPalindrome(s,i,i);
-            // even  
-            extendPalindrome(s,i,i+1);  
-      
-        }
-        return ans;
+   
+    public String longestPalindrome(String str) {
+       int n = str.length();
+		 boolean[][] dp = new boolean[n][n];
+		 int max=0;
+		 String ans = "";
+		 for(int g=0; g<n; g++){
+			 for(int i=0,j=g; j<n; j++,i++){
+				 if(g==0) dp[i][j] = true;
+				 else if(g==1) dp[i][j] = str.charAt(i)==str.charAt(j);
+				 else{
+					 dp[i][j] = str.charAt(i)==str.charAt(j) && dp[i+1][j-1];
+					 
+				 }
+				 if(dp[i][j] && (j-i+1)>max){
+					 ans = str.substring(i,j+1);
+					 max = (j-i+1);
+				 }
+			 }
+		 }
+		 return ans;
     }
 }
