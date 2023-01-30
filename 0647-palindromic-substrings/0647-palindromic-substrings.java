@@ -1,17 +1,24 @@
+
 class Solution {
-    public int countSubstrings(String s) {
+    
+    int count=0;
+
+    public void extendPalindrome(String s, int l, int r){       
+        while(l>=0 && r<s.length() && s.charAt(l)==s.charAt(r)){
+            count++;
+            l--; r++;
+        } 
+    }
+    
+   public int countSubstrings(String s) {
         int n = s.length();
-        boolean[][] dp = new boolean[n][n];
-        int count=0;
         
-        for(int g=0; g<n; g++){
-            for(int i=0,j=g; j<n; i++,j++){
-                if(g==0) dp[i][j] = true;
-                else if(g==1) dp[i][j] = s.charAt(i)==s.charAt(j);
-                else dp[i][j] = s.charAt(i)==s.charAt(j) && dp[i+1][j-1];
-                count += dp[i][j]?1:0;
-            }
-            
+        for(int i=0; i<n; i++){
+            // odd                                             
+            extendPalindrome(s,i,i);
+            // even  
+            extendPalindrome(s,i,i+1);  
+      
         }
         return count;
     }
