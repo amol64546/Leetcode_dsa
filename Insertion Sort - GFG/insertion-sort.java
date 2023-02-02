@@ -41,28 +41,19 @@ class Solution
   static void insert(int arr[],int i)
   {
        // Your code here
-        int curr = arr[i];
-           int j=i;
-           // Moving elements from left part
-            // one position ahead
-            // that are greater than curr ele
-       while(j>=1 && curr<arr[j-1]){
-               arr[j] = arr[j-1];
-               j--;
-         }
-           arr[j] = curr;
-           
   }
   //Function to sort the array using insertion sort algorithm.
   public void insertionSort(int arr[], int n)
   {
-      
-       for(int i=1; i<n; i++){
-            insert(arr,i);
-       }
-      
-            
-            
-      
+      //code here
+      for(int i=1; i<n; i++){
+          int j=i;
+          int curr = arr[i];
+          while(j>0 && curr<arr[j-1]){
+            arr[j] = arr[j-1];
+            j--;
+          }
+          arr[j] = curr;
+      }
   }
 }
