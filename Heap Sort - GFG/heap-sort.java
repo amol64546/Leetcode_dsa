@@ -38,31 +38,26 @@ class Heap_Sort
 class Solution
 {
     //Function to build a Heap from array.
-    void buildHeap(int arr[], int n)
-    {
-        // Your code here
+    void swap(int arr[], int i,int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
+   
  
     //Heapify function to maintain heap property.
     void heapify(int arr[], int n, int i)
     {
         // Your code here
-        int lci = 2*i + 1;
-        int rci = 2*i + 2;
-        int maxi  = i;
-        if(lci<n && arr[lci]>arr[maxi]) maxi = lci;
-        if(rci<n && arr[rci]>arr[maxi]) maxi = rci;
+        int lci = 2*i+1;
+        int rci = 2*i+2;
+        int maxi=i;
+        if(lci<n && arr[maxi]<arr[lci]) maxi=lci;
+        if(rci<n && arr[maxi]<arr[rci]) maxi=rci;
         if(maxi!=i){
             swap(arr,maxi,i);
             heapify(arr,n,maxi);
         }
-        
-        
-    }
-    void swap(int[] arr,int i,int j){
-         int temp = arr[j];
-            arr[j] = arr[i];
-            arr[i] = temp;
     }
     
     //Function to sort an array using Heap Sort.
