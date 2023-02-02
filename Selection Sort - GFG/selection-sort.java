@@ -36,29 +36,25 @@ class Solution
 	int  select(int arr[], int i)
 	{
         // code here such that selectionSort() sorts arr[]
-        int minInd = i;
+        int minIdx = i;
         for(int j=i+1; j<arr.length; j++){
-	            if(arr[j] < arr[minInd])
-	                minInd = j;
+	            if(arr[j]<arr[minIdx]){
+	                minIdx = j;
+	            }
 	        }
-	        return minInd;
+	        return minIdx;
 	}
 	
 	void selectionSort(int arr[], int n)
 	{
 	    //code here
 	    for(int i=0; i<n-1; i++){
-	       
-	        // find value < curr 
-	        // ie min value index from unsorted part
-	        int minInd = select(arr,i);
-	        // swapping found min ele with curr
-	        if(minInd != i){
-	            int temp = arr[minInd];
-	            arr[minInd]  = arr[i];
-	            arr[i] = temp;
+	        int minIdx = select(arr,i);
+	        if(minIdx!=i){
+                int temp = arr[minIdx];
+                arr[minIdx] = arr[i];
+                arr[i] = temp;
 	        }
-	            
 	    }
 	}
 }
