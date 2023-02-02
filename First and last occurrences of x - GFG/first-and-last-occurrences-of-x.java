@@ -13,49 +13,50 @@ import java.util.*;
 
 class GFG
 {
-    ArrayList<Long> find(long arr[], int n, int k)
+    
+    ArrayList<Long> find(long arr[], int n, int x)
     {
         // code here
-        ArrayList<Long> list = new ArrayList<>();
-        list.add(first(arr,n,k));
-        list.add(last(arr,n,k));
+        ArrayList<Long> list = new  ArrayList<Long>();
+        long first = firstOcc(arr,0,n-1,x); 
+        long last = lastOcc(arr,0,n-1,x); 
+        list.add(first);
+        list.add(last);
         return list;
+         
     }
     
-    long last(long arr[], int n, int k){
-         int l=0, r=arr.length-1;  
-         long ans=-1;
+    public long lastOcc(long[] arr,int l,int r,int x){
+        if(arr[r]==x) return r;
+        
         while(l<=r){
-            int mid  = l+(r-l)/2;
-            if(k<arr[mid]){
-                r = mid - 1;
-            }else if(k>arr[mid]){
-                l = mid + 1;
+            int mid = (l+r)/2;
+            if(arr[mid] == x){
+                if(arr[mid+1]> x) return mid;
+                else l = mid+1;
+            }else if(arr[mid] < x){
+                l = mid+1;
             }else{
-                ans=mid;
-                l = mid + 1;
-                
+                r = mid-1;
             }
         }
-        return ans;
+        return -1;
     }
     
-    long first(long arr[], int n, int k){
-         int l=0, r=arr.length-1;  
-         long ans=-1;
+    public long firstOcc(long[] arr,int l,int r,int x){
+        if(arr[0]==x) return 0;
         while(l<=r){
-            int mid  = l+(r-l)/2;
-            if(k<arr[mid]){
-                r = mid - 1;
-            }else if(k>arr[mid]){
-                l = mid + 1;
+            int mid = (l+r)/2;
+            if(arr[mid] == x){
+                if(arr[mid-1]< x) return mid;
+                else r = mid-1;
+            }else if(arr[mid] < x){
+                l = mid+1;
             }else{
-                ans=mid;
-                r = mid - 1;
-                
+                r = mid-1;
             }
         }
-        return ans;
+        return -1;
     }
 }
 
