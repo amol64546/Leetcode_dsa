@@ -36,37 +36,28 @@ class Solution
     //Function to sort an array using quick sort algorithm.
     static void quickSort(int arr[], int low, int high)
     {
-        // base case
-        if(low >= high) return;
-        // getting partition index
-        int pi = partition(arr,low,high);
+        // code here
+        if(low>=high) return;
+        int pivot = partition(arr,low,high);
+        quickSort(arr,low,pivot-1);
+        quickSort(arr,pivot+1,high);
         
-        // sort elements before partition
-        quickSort(arr,low,pi-1);
-        // sort elements after partition
-        quickSort(arr,pi+1,high);
     }
-    
-    // select last ele as pivot
-    // places pivot at its correct pos acc sorted array
-    // places all smaller in left and greater in right of pivot
-    
-    static int partition(int arr[], int l, int r)
+    static int partition(int arr[], int low, int high)
     {
-        int pivot = arr[r];
-        int i = l;
-        
-        for(int j=l; j<=r; j++){
-            // swapping smaller than pivot to left part
-            if(arr[j] <= pivot){
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+        // your code here
+        int i=low, pivot = arr[high];
+        for(int j=low; j<=high; j++){
+            if(arr[j]<=pivot){
+                if(i!=j){
+                    int temp = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = temp;
+                }
                 i++;
             }
         }
-        // pivot index
-        return i-1;
         
+        return i-1;
     } 
 }
