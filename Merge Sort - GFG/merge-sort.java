@@ -59,47 +59,35 @@ class Solution
 {
     void merge(int arr[], int l, int m, int r)
     {
-         
-         
-         int[] temp  = new int[r-l+1];
-         
-         int i=l, j=m+1, k=0;
-         
-         // copy to temp array acc to sorting order
+         // Your code here
+         int[] temp = new int[r-l+1];
+         int i=l, j=m+1;
+         int k=0;
          while(i<=m && j<=r){
-             if(arr[i]<=arr[j]){
+            if(arr[i]<arr[j]){
                 temp[k++] = arr[i++];
-             }else{
-                 temp[k++] = arr[j++];
-             }
+            }else{
+                temp[k++] = arr[j++];
+            }
          }
-         
-         // copy remaining data
-         while(i<=m ){
+         while(i<=m){
             temp[k++] = arr[i++];
          }
          while(j<=r){
             temp[k++] = arr[j++];
          }
-         
-         // copy back to original array
          for(int p=l,t=0; p<=r; p++,t++){
-            arr[p]  = temp[t];
+            arr[p] = temp[t];
          }
     }
     void mergeSort(int arr[], int l, int r)
     {
-        // base case
+        //code here
         if(l>=r) return;
-        
-        // find middle point
         int mid = (l+r)/2;
-        
-        // sort first and second halves
         mergeSort(arr,l,mid);
         mergeSort(arr,mid+1,r);
-        
-        // merge the sorted halves
         merge(arr,l,mid,r);
     }
+    
 }
