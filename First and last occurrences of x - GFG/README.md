@@ -4,24 +4,24 @@
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
-<pre><span style="font-size:18px"><strong>Input:</strong>
+<pre style="position: relative;"><span style="font-size:18px"><strong>Input:</strong>
 n=9, x=5
 arr[] = { 1, 3, 5, 5, 5, 5, 67, 123, 125 }
 <strong>Output:</strong>  2 5
 <strong>Explanation</strong>: First occurrence of 5 is at index 2 and last
 &nbsp;            occurrence of 5 is at index 5. 
-</span></pre>
+</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p>&nbsp;</p>
 
 <p><span style="font-size:18px"><strong>Example 2:</strong></span></p>
 
-<pre><span style="font-size:18px"><strong>Input:
+<pre style="position: relative;"><span style="font-size:18px"><strong>Input:
 </strong>n=9, x=7
 arr[] = { 1, 3, 5, 5, 5, 5, 7, 123, 125 }
 <strong>Output:</strong>  6 6 
 
-</span></pre>
+</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><span style="font-size:18px"><strong>Your Task:</strong><br>
 Since, this is a function problem. You don't need to take any input, as it is already accomplished by the driver code. You just need to complete the function <strong>find</strong>() that takes <strong>array arr, integer n and integer x</strong> as parameters and returns the required answer.<br>
