@@ -93,16 +93,15 @@ class Solution
     public Node removeDuplicates(Node head) 
     {
          // Your code here
-         HashSet<Integer> set = new HashSet<Integer>();
-         Node prev = null;
-         Node curr = head;
+         Set<Integer> set = new HashSet<>();
+         Node curr = head, prev=null;
          while(curr!=null){
              if(set.contains(curr.data)){
                  prev.next = curr.next;
              }else{
-                 set.add(curr.data);
                  prev = curr;
              }
+             set.add(curr.data);
              curr = curr.next;
          }
          return head;
