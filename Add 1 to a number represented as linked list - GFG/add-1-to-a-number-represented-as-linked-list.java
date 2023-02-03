@@ -63,19 +63,24 @@ class Solution
     public static Node addOne(Node head) { 
         head = reverse(head);
         
-        Node curr = head, prev=null;
+        Node curr = head;
         while(curr!=null){
             if(curr.data==9){
                 curr.data = 0;
             }else{
                 curr.data++;
-                return reverse(head);
+                break;
             }  
-            prev = curr;
             curr = curr.next;
         }
-        prev.next = new Node(1);
-        return reverse(head);
+        
+        head =  reverse(head);
+        Node node = new Node(1);
+        if(head.data==0){
+            node.next = head;
+            head = node;
+        }
+        return head;
     }
     
     static Node reverse(Node head) {
