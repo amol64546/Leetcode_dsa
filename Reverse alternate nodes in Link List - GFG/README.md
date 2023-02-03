@@ -10,7 +10,7 @@
 
 <p><span style="font-size:18px">â€‹<strong>Example 1:</strong></span></p>
 
-<pre><span style="font-size:18px"><strong>Input:
+<pre style="position: relative;"><span style="font-size:18px"><strong>Input:
 </strong>LinkedList = 10-&gt;4-&gt;9-&gt;1-&gt;3-&gt;5-&gt;9-&gt;4
 <strong>Output: </strong>10 9 3 9 4 5 1 4<strong>
 Explanation: </strong>Reversing the alternative
@@ -18,14 +18,14 @@ nodes from the given list, and then
 appending them to the end of the list
 results in a list with the elements as
 10 9 3 9 4 5 1 4.</span>
-</pre>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><span style="font-size:18px">â€‹<strong>Example 2:</strong></span></p>
 
-<pre><span style="font-size:18px"><strong>Input:
+<pre style="position: relative;"><span style="font-size:18px"><strong>Input:
 </strong>LinkedList = 1-&gt;2-&gt;3-&gt;4-&gt;5
 <strong>Output: </strong>1 3 5 4 2&nbsp;<strong>
-Explanation:</strong></span></pre>
+Explanation:</strong></span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><span style="font-size:18px"><strong>Your Task:</strong><br>
 You don't have to read input or print anything. Your&nbsp;task is to complete the function&nbsp;<strong>rearrange</strong>() which takes the head of the linked list as input and&nbsp;rearranges the list as required.</span></p>
