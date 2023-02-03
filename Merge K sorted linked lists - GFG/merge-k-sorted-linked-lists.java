@@ -83,24 +83,39 @@ class GfG
 class Solution
 {
     //Function to merge K sorted linked list.
-    Node mergeKList(Node[]arr,int K)
+    Node mergeKList(Node[]arr,int k)
     {
         //Add your code here.
-        Node dummy = new Node(0);
-        Node temp = dummy;
-        Queue<Node> q = new PriorityQueue<>((a,b)->a.data-b.data);
-        for(Node node: arr){
-            q.offer(node);
-        }
-        while(q.size()>0){
-            Node node = q.poll();
-            temp.next = node;
-            temp = node;
-            if(node.next!=null){
-                q.offer(node.next);
-            }
-        }
-        return dummy.next;
+       
+       return mergeSort(arr,0,k-1);
         
+    }
+    
+    Node mergeSort(Node[] arr,int s,int e){
+        if(s==e) return arr[s];
+        int m = (s+e)/2;
+        Node left = mergeSort(arr,s,m);
+        Node right = mergeSort(arr,m+1,e);
+        return merge(left,right);
+    }
+    
+    Node merge(Node f,Node s){
+        if(f==null) return s;
+        if(s==null) return f;
+        Node temp = new Node(0);
+        Node head = temp;
+        while(f!=null && s!=null){
+            if(f.data<s.data){
+                temp.next = f;
+                f=f.next;
+            }else{
+                temp.next = s;
+                s=s.next;
+            }
+            temp=temp.next;
+        }
+        if(f==null) temp.next = s;
+        else temp.next = f;
+        return head.next;
     }
 }
