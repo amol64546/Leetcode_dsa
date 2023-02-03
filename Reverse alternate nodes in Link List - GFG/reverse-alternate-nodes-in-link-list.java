@@ -69,27 +69,29 @@ class Solution
     public static void rearrange(Node odd)
     {
         // add your code here
-        if(odd==null || odd.next==null || odd.next.next==null) return;
-        
-        Node even=odd.next, evenHead = even;
-        while(odd.next!=null && even.next!=null){
-            odd.next=even.next;
-            odd = even.next;
-            even.next = odd.next;
-            even = odd.next;
+        Node head = odd;
+        Node evenHead = odd.next;
+        Node even = odd.next;
+        while(odd.next != null && even.next != null){
+            odd.next = odd.next.next;
+            odd = odd.next;
+            even.next = even.next.next;
+            even = even.next;
         }
-        odd.next = reverse(evenHead);
+        Node node = reverse(evenHead);
+        odd.next = node;
+        
+        
     }
-    public static Node reverse(Node head) {
-         if(head==null || head.next==null) return head;
-         Node prev=null, temp=null, curr = head;
-        while(curr!=null){
-            temp = curr.next;
-            curr.next=prev;
-            prev=curr;
-            curr = temp;
-        }
-        
+    
+     static Node reverse(Node node){
+        Node prev = null, curr=node, temp = null;
+                while(curr!=null){
+                    temp = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = temp;
+                }
         return prev;
     }
 }
