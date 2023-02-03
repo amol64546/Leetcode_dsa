@@ -73,46 +73,47 @@ class Node
 
 class Solution
 {
-    
-    static Node getAndcutMid(Node curr){
-        Node slow = curr, fast = curr;
-        Node prev = null;
-        while(fast!=null && fast.next!=null){
-            prev = slow;
-            slow=slow.next;
-            fast = fast.next.next;
-            
-        }
-        prev.next = null;  // cut
-        return slow;
-    }
     //Function to sort the given linked list using Merge Sort.
     static Node mergeSort(Node head)
     {
+        // add your code here
         if(head==null || head.next==null) return head;
-        Node mid = getAndcutMid(head);   // dividing into two
+        Node mid = getMid(head);
         Node left = mergeSort(head);
         Node right = mergeSort(mid);
-        return sort(left,right);
+        return merge(left,right);
         
     }
     
-    static Node sort(Node left, Node right){
-        Node dummy = new Node(0);
-        Node curr = dummy;
-        while(left!=null && right!=null ){
-            if(left.data<right.data){
-                curr.next = left;
-                left = left.next;
+    static Node merge(Node f, Node s){
+        Node temp = new Node(0);
+        Node head = temp;
+        while(f!=null && s!=null){
+            if(f.data<s.data){
+                temp.next = f;
+                f=f.next;
             }else{
-                curr.next = right;
-                right = right.next;
+                temp.next = s;
+                s=s.next;
             }
-            curr = curr.next;
+            temp=temp.next;
         }
-        
-        curr.next = (left!=null) ? left:right;
-        return dummy.next;
+        if(f==null) temp.next = s;
+        else temp.next = f;
+        return head.next;
+    }
+    
+    static Node getMid(Node head)
+    {
+         // Your code here.
+         Node slow=head,fast=head, prev=null;
+         while(fast!=null && fast.next!=null){
+             prev = slow;
+             slow = slow.next;
+             fast = fast.next.next;
+         }
+         prev.next = null;
+         return slow;
     }
 }
 
