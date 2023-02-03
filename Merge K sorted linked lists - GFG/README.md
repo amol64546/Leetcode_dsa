@@ -4,7 +4,7 @@
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
-<pre style="position: relative;"><span style="font-size:18px"><strong>Input:
+<pre><span style="font-size:18px"><strong>Input:
 </strong>K = 4
 value = {{1,2,3},{4 5},{5 6},{7,8}}
 <strong>Output: </strong>1&nbsp;2&nbsp;3&nbsp;4&nbsp;5&nbsp;5&nbsp;6&nbsp;7&nbsp;8<strong>
@@ -17,11 +17,11 @@ list of size 3, 2,&nbsp;2,&nbsp;2
 4th&nbsp; &nbsp; list &nbsp; &nbsp; &nbsp;7-&gt;8
 The merged list will be
 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;5-&gt;6-&gt;7-&gt;8.</span>
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 
 <p><span style="font-size:18px"><strong>Example 2:</strong></span></p>
 
-<pre style="position: relative;"><span style="font-size:18px"><strong>Input:
+<pre><span style="font-size:18px"><strong>Input:
 </strong>K = 3
 value = {{1,3},{4,5,6},{8}}
 <strong>Output: </strong>1 3 4 5 6 8<strong>
@@ -33,7 +33,7 @@ list of size 2, 3, 1.
 3rd list 8
 The merged list will be
 1-&gt;3-&gt;4-&gt;5-&gt;6-&gt;8.</span>
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 
 <p><span style="font-size:18px"><strong>Your Task:</strong><br>
 The task is to complete the function <strong>mergeKList</strong>() which merges the K given lists into a sorted one. The <strong>printing </strong>is done <strong>automatically </strong>by the <strong>driver code</strong>.</span></p>
