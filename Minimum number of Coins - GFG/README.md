@@ -6,21 +6,21 @@ Find the <strong>minimum</strong> number of coins and/or notes needed to make th
 <p><br>
 <strong><span style="font-size:18px">Example 1:</span></strong></p>
 
-<pre style="position: relative;"><span style="font-size:18px"><strong>Input:</strong> N = 43
+<pre><span style="font-size:18px"><strong>Input:</strong> N = 43
 <strong>Output:</strong> 20 20 2 1
 <strong>Explaination:</strong> 
 Minimum number of coins and notes needed 
 to make 43. </span>
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 
 <p><br>
 <strong><span style="font-size:18px">Example 2:</span></strong></p>
 
-<pre style="position: relative;"><span style="font-size:18px"><strong>Input:</strong> N = 1000
+<pre><span style="font-size:18px"><strong>Input:</strong> N = 1000
 <strong>Output:</strong> 500 500
 <strong>Explaination:</strong> minimum possible notes
 is 2 notes of 500.</span>
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 
 <p><br>
 <span style="font-size:18px"><strong>Your Task:</strong><br>
