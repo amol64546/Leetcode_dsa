@@ -53,18 +53,21 @@ class Solution
     { 
          // your code here 
          int[][] dp = new int[n+1][W+1];
-         return solve(W,wt,val,n-1,dp);
+         
+         for(int i=1; i<=n; i++){
+             for(int j=1; j<=W; j++){
+                 if(j<wt[i-1]) {
+                     dp[i][j] = dp[i-1][j]; //solve(W,wt,val,i-1,dp); 
+                     continue;
+                 }
+                int pick = val[i-1] + dp[i-1][j-wt[i-1]]; //solve(W-wt[i],wt,val,i-1,dp);
+                int notpick = dp[i-1][j];   //solve(W,wt,val,i-1,dp); 
+                dp[i][j] = Math.max(pick,notpick);
+             }
+         }
+         return dp[n][W];
     } 
-    
-    static int solve(int W, int wt[], int val[], int i,int[][] dp){
-        if(i<0 || W<=0) return 0;
-        if(dp[i][W]!=0) return dp[i][W];
-        
-        if(W<wt[i]) return  dp[i][W] = solve(W,wt,val,i-1,dp); 
-        int pick = val[i] + solve(W-wt[i],wt,val,i-1,dp);
-        int notpick = solve(W,wt,val,i-1,dp); 
-        return dp[i][W] = Math.max(pick,notpick);
-    }
+   
 }
 
 
