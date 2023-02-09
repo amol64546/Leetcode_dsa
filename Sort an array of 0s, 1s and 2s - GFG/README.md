@@ -5,25 +5,25 @@
 <p><br>
 <span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
-<pre style="position: relative;"><span style="font-size:18px"><strong>Input: </strong>
+<pre><span style="font-size:18px"><strong>Input: </strong>
 N = 5
 arr[]= {0 2 1 2 0}
 <strong>Output:</strong>
 0 0 1 2 2
 <strong>Explanation:</strong>
 0s 1s and 2s are segregated 
-into ascending order.</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+into ascending order.</span></pre>
 
 <p><strong><span style="font-size:18px">Example 2:</span></strong></p>
 
-<pre style="position: relative;"><span style="font-size:18px"><strong>Input: </strong>
+<pre><span style="font-size:18px"><strong>Input: </strong>
 N = 3
 arr[] = {0 1 0}
 <strong>Output:</strong>
 0 0 1
 <strong>Explanation:</strong>
 0s 1s and 2s are segregated 
-into ascending order.</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+into ascending order.</span></pre>
 
 <p><br>
 <span style="font-size:18px"><strong>Your Task:</strong><br>
