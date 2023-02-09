@@ -12,28 +12,27 @@ class Solution
 {
     public static void sort012(int a[], int n)
     {
-        int start=0,i=0,end=n-1;
+        // code here 
+        int l=0, m=0, r=n-1;
         
-        while(i<=end){
-            if(a[i]==0){
-                swap(a,start,i);
-                i++;
-                start++;
+        while(m<=r){
+            if(a[m]==0){
+                swap(a,m,l);
+                l++;
+                m++;
+            }else if(a[m]==1){
+                m++;
+            }else{
+                swap(a,m,r);
+                r--;
             }
-            else if(a[i]==1){
-                i++;
-            }
-            else{
-               swap(a,i,end); 
-               end--;
-            }
+            
         }
     }
-    
-    public static void swap(int[] arr, int i, int j){
-        int t = arr[i];
-        arr[i] = arr[j];
-        arr[j] = t;
+    public static void swap(int[] a,int i,int j){
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
     }
 }
 
