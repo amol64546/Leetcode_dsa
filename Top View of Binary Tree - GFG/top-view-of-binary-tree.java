@@ -128,32 +128,40 @@ class Solution
 {
     //Function to return a list of nodes visible from the top view 
     //from left to right in Binary Tree.
-
+    static class Pair{
+        Node node;
+        int hd;
+        Pair(Node node,int hd){
+            this.node = node;
+            this.hd = hd;
+        }
+    }
     static ArrayList<Integer> topView(Node root)
     {
-         // add your code
-       TreeMap<Integer,Pair> map = new TreeMap<>();
-      helper(root,0,0,map);
-            ArrayList<Integer> list = new ArrayList<>();
-            for(Pair p: map.values())
-                list.add(p.data);
-            return list;
-    }
-    static void helper(Node root, int hd, int level, Map<Integer,Pair> map){
-        if(root==null) return;
-        if(!map.containsKey(hd) || level<map.get(hd).level)
-            map.put(hd,new Pair(root.data,level));
+        // add your code
+        Map<Integer,Integer> map = new TreeMap<>();  // sorted
+        Queue<Pair> q = new ArrayDeque<>();
+        
+        q.offer(new Pair(root,0));
+        
+        while(!q.isEmpty()){
             
-            helper(root.left,hd-1,level+1,map);
-            helper(root.right,hd+1,level+1,map);
-    }
-    
-}
-class Pair{
-    int level;
-    int data;
-    Pair(int data, int level){
-        this.level = level;
-        this.data = data;
+            int n = q.size();
+            for(int i=0; i<n; i++){
+                int hd = q.peek().hd; 
+                Node node = q.poll().node;
+                
+                if(!map.containsKey(hd)) map.put(hd,node.data);
+                
+                if(node.left!=null)
+                    q.offer(new Pair(node.left,hd-1));
+                if(node.right!=null)
+                    q.offer(new Pair(node.right,hd+1));
+            }
+           
+            
+        }
+        return new ArrayList<Integer>(map.values());
+        
     }
 }
