@@ -119,36 +119,41 @@ class GfG {
 
 class Solution
 {
-    //Function to return a list containing the bottom view of the given tree.
-    public ArrayList <Integer> bottomView(Node root)
-    {
-       TreeMap<Integer,Integer> map = new TreeMap<>();      
-            Queue<Pair> q = new ArrayDeque<>();            
-            q.offer(new Pair(0,root));
-                while(!q.isEmpty()){
-                     int n = q.size();
-                      for(int i=0; i<n; i++){
-                            Pair temp = q.poll();
-                            map.put(temp.hd,temp.node.data);                            
-                            if(temp.node.left!=null){
-                                q.offer(new Pair(temp.hd-1,temp.node.left));
-                            }                                    
-                            if(temp.node.right!=null){
-                                q.offer(new Pair(temp.hd+1,temp.node.right));
-                            }                                  
-                            
-                    }
-            }            
-            ArrayList<Integer> list = new ArrayList<>(map.values());
-            return list;
+    
+    static class Pair{
+        Node node;
+        int hd;
+        Pair(Node node,int hd){
+            this.node = node;
+            this.hd = hd;
+        }
     }
-         
-}
-class Pair{
-    int hd;
-    Node node;
-    Pair(int hd, Node node){
-        this.hd = hd;
-        this.node = node;
+    static ArrayList<Integer> bottomView(Node root)
+    {
+        // add your code
+        Map<Integer,Integer> map = new TreeMap<>();  // sorted
+        Queue<Pair> q = new ArrayDeque<>();
+        
+        q.offer(new Pair(root,0));
+        
+        while(!q.isEmpty()){
+            
+            int n = q.size();
+            for(int i=0; i<n; i++){
+                int hd = q.peek().hd; 
+                Node node = q.poll().node;
+                
+                 map.put(hd,node.data);
+                
+                if(node.left!=null)
+                    q.offer(new Pair(node.left,hd-1));
+                if(node.right!=null)
+                    q.offer(new Pair(node.right,hd+1));
+            }
+           
+            
+        }
+        return new ArrayList<Integer>(map.values());
+        
     }
 }
