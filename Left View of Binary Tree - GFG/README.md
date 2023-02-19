@@ -14,20 +14,20 @@
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
-<pre style="position: relative;"><span style="font-size:18px"><strong>Input:
+<pre><span style="font-size:18px"><strong>Input:
 </strong>&nbsp;  1
 &nbsp;/&nbsp; \
 3&nbsp; &nbsp; 2
 <strong>Output: </strong>1 3<strong>
 </strong></span>
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 
 <p><span style="font-size:18px"><strong>Example 2:</strong></span></p>
 
-<pre style="position: relative;"><span style="font-size:18px"><strong>Input:
+<pre><span style="font-size:18px"><strong>Input:
 </strong><img alt="" src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190221103723/leftview.jpg" style="height:272px; width:285px">
 <strong>Output: </strong>10 20 40
-</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</span></pre>
 
 <p><span style="font-size:18px"><strong>Your Task:</strong><br>
 You just have to <strong>complete </strong>the function <strong>leftView() </strong>that returns an array containing the nodes that are in&nbsp;the left view. The newline is automatically appended by the driver code.</span><br>
