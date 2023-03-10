@@ -24,6 +24,6 @@ class Solution {
       
         if(root.left==null && root.right==null)  
             return flag ?  root.val : 0;                                                                                                            
-        return helper(root.left, flag=true)+helper(root.right, flag=false);
+        return helper(root.left, true)+helper(root.right, false);
     }
 }
