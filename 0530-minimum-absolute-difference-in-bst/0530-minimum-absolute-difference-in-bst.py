@@ -4,21 +4,26 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
 class Solution:
-    def inorder(self,root,output):
-        if not root: return        
-        self.inorder(root.left,output)        
-        output.append(root.val)
-        self.inorder(root.right,output)
+    
 
     def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
-        mini = 100000
+        mini = int(1e5)
+        prev = None
        
-        output = []
-        self.inorder(root,output)  
         
-        for i in range(1,len(output)):
-            mini = min(mini,output[i]-output[i-1])
+        def inorder(root):
+            nonlocal mini,prev
+            
+            if not root: return        
+            inorder(root.left)        
+            if prev:
+                mini = min(mini,root.val-prev.val)
+            prev = root
+            inorder(root.right) 
+            
+        inorder(root)
         
         return mini
     
