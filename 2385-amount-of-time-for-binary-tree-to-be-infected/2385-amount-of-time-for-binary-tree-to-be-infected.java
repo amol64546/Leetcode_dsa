@@ -13,51 +13,25 @@
  *     }
  * }
  */
-class Pair{
-    TreeNode node;
-    int parent;
-    Pair(TreeNode node,int parent){
-        this.node = node;
-        this.parent = parent;
-    }
-}
+
 class Solution {
     Map<Integer,List<Integer>> graph = new HashMap<>();
     
-    public void convertToGraph(TreeNode root){
-        Queue<Pair> q = new LinkedList<>();
+    public void convertToGraph(TreeNode root,int parent){
+        if(root==null) return;
         
-        q.offer(new Pair(root,-1));
-
+        List<Integer> list = graph.getOrDefault(root.val,new ArrayList<>());
+        if(root.left!=null) list.add(root.left.val);
+        if(root.right!=null) list.add(root.right.val);
+        if(parent!=-1) list.add(parent);
+        graph.put(root.val,list);
         
-        while(q.size()>0){
-            int n = q.size();
-            
-            for(int i=0;i<n;i++){
-                Pair p = q.poll(); 
-                TreeNode node = p.node;
-                int parent = p.parent;
-                 List<Integer> list = graph.getOrDefault(node.val,new ArrayList<>());
-                if(parent!=-1) list.add(parent);
-                
-                if(node.left!=null){
-                    q.offer(new Pair(node.left,node.val));
-                    list.add(node.left.val);
-                }
-                if(node.right!=null){
-                    q.offer(new Pair(node.right,node.val));
-                    list.add(node.right.val);
-                }
-                
-                graph.put(node.val,list);
-            }
-           
-            
-        }
+        convertToGraph(root.left,root.val);
+        convertToGraph(root.right,root.val);
     }
     
     public int amountOfTime(TreeNode root, int start) {
-        convertToGraph(root);
+        convertToGraph(root,-1);
         // System.out.print(graph);
         Queue<Integer> q = new LinkedList<>();
         q.offer(start);
