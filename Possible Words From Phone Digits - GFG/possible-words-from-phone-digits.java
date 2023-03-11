@@ -35,33 +35,27 @@ class PhoneDigit
 
 class Solution
 {
+    static String[] map = {"abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
     //Function to find list of all words possible by pressing given numbers.
     static ArrayList <String> possibleWords(int a[], int N)
     {
         // your code here  
-        Map<Integer,String> map = new HashMap<>();
-        map.put(2,"abc");
-        map.put(3,"def");
-        map.put(4,"ghi");
-        map.put(5,"jkl");
-        map.put(6,"mno");
-        map.put(7,"pqrs");
-        map.put(8,"tuv");
-        map.put(9,"wxyz");
+        
+        
         ArrayList<String> list = new ArrayList<>();
-        backtrack(a,0,list,new StringBuilder(),map);
+        backtrack(a,0,list,new StringBuilder());
         return list;
     }
     
-    static void backtrack(int[] a,int i,ArrayList<String> list, StringBuilder sb,Map<Integer,String> map){
+    static void backtrack(int[] a,int i,ArrayList<String> list, StringBuilder sb){
         if(sb.length()==a.length){
             list.add(sb.toString());
             return;
         }
-        String curr = map.get(a[i]);
+        String curr = map[a[i]-2];
         for(int j=0;j<curr.length(); j++){
             sb.append(curr.charAt(j));
-            backtrack(a,i+1,list,sb,map);
+            backtrack(a,i+1,list,sb);
             sb.deleteCharAt(sb.length()-1);
         }
     }
