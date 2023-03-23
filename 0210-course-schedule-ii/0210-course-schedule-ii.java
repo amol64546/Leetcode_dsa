@@ -1,46 +1,33 @@
 class Solution {
-    public int[] findOrder(int numCourses, int[][] prerequisites) {
+    public int[] findOrder(int n, int[][] arr) {
+        int[] indeg = new int[n];
+        int count=0;
+        for(int[] e: arr){
+            indeg[e[0]]++;           
+        } 
         
-        
-        
-        
-        int[] res = new int[numCourses];
-        int index=0;
-        
-        // dealing with dependencies
-        int[] dep = new int[numCourses];
-        
-        for(int[] course: prerequisites){           
-            dep[course[0]]++;
-        }
-        
-       
-        Queue<Integer> q = new LinkedList<Integer>();
-        
-        for(int i=0; i<numCourses; i++){
-            if(dep[i]==0){
-                res[index++] = i;
-                  q.offer(i);
-            }
+        Queue<Integer> q = new LinkedList<>();
+        int[] ans = new int[n];
+        int k=0;
+        for(int i=0;i<n;i++){            
+         if(indeg[i]==0) {
+            q.offer(i);
+              ans[k++] = i;
+         }
         }
         
         while(!q.isEmpty()){
-            int curr = q.poll();			
-            
-             for(int i=0; i<prerequisites.length; i++){  
-                 int src = prerequisites[i][1];
-			    int nbr = prerequisites[i][0];
-                if(src==curr){   // checking for nbrs in edges graph
-                     dep[nbr]--;                
-                    if(dep[nbr]==0){
-                        res[index++] = nbr;
-                         q.offer(nbr);
+            int temp = q.poll();            
+            for(int[] e: arr){
+                if(e[1]==temp){
+                    indeg[e[0]]--;                    
+                    if(indeg[e[0]]==0){
+                         q.offer(e[0]);
+                         ans[k++] = e[0];
                     }
                 }
-            }            
+            }
         }
-		
-        
-        return (index==numCourses) ? res : new int[0];
+        return k==n ? ans: new int[0];
     }
 }
