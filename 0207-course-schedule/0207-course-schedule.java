@@ -1,44 +1,45 @@
 class Solution {
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
+    public boolean canFinish(int n, int[][] arr) {
+        // List<List<Integer>> adj = new ArrayList<>();        
+        // for(int i=0;i<n;i++){
+        //     adj.add(new ArrayList<>());
+        // }
+        // for(int[] e: arr){
+        //     adj.get(e[1]).add(e[0]);          
+        // }
         
-       
+        int[] indeg = new int[n];
+        int count=0;
+        for(int[] e: arr){
+            indeg[e[0]]++;           
+        } 
         
+        Queue<Integer> q = new LinkedList<>();
         
-        // dealing with dependencies
-        int[] dep = new int[numCourses];
-        
-        for(int[] course: prerequisites){           
-            dep[course[0]]++;
+        for(int i=0;i<n;i++){            
+         if(indeg[i]==0) {
+            q.offer(i);
+              count++;
+         }
         }
         
-        // startin dfs
-        Stack<Integer> st = new Stack<>();
-        int index=0;
-        for(int i=0; i<numCourses; i++){
-            if(dep[i]==0){
-                 st.push(i);
-                index++;
-            }
-        }
-        
-        while(!st.empty()){
-            int curr = st.pop();
-            
-            for(int i=0; i<prerequisites.length; i++){    
-                int src = prerequisites[i][1];
-                int nbr = prerequisites[i][0];
-                
-                if(src==curr){
-                     dep[nbr]--;                
-                    if(dep[nbr]==0){
-                        st.push(nbr);
-                        index++;
+        while(!q.isEmpty()){
+            int temp = q.poll();            
+            for(int[] e: arr){
+                if(e[1]==temp){
+                    indeg[e[0]]--;                    
+                    if(indeg[e[0]]==0){
+                         q.offer(e[0]);
+                         count++;
                     }
                 }
-            }            
+            }
         }
+        // for(int i: indeg) if(i!=0) return false;
+        // return true;
         
-        return (index==numCourses) ? true:false;
-       
+        return count==n;
+        
+        
     }
 }
